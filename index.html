@@ -47,6 +47,8 @@
             position: sticky;
             top: 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            flex-wrap: wrap; /* รองรับหน้าจอมือถือ */
         }
 
         nav a {
@@ -131,6 +133,27 @@
             font-weight: 600;
             font-size: 1.1rem;
         }
+
+        /* --- ตั้งค่าปุ่มแชท (Floating Button) --- */
+        #chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        #chat-button:hover {
+            transform: scale(1.05);
+            background-color: #3e2615;
+        }
     </style>
 </head>
 <body>
@@ -205,12 +228,16 @@
         </div>
     </div>
 
+    <div id="chat-button" onclick="openChatPopup()">
+        💬 พูดคุยกับแชทบอท
+    </div>
+
     <script>
+        // ฟังก์ชันตรวจคำตอบแบบทดสอบ
         function checkAnswer() {
             const answers = document.getElementsByName('answer');
             let selectedValue = '';
             
-            // ตรวจสอบว่าผู้ใช้เลือกตัวเลือกใด
             for (let i = 0; i < answers.length; i++) {
                 if (answers[i].checked) {
                     selectedValue = answers[i].value;
@@ -220,7 +247,6 @@
 
             const resultDiv = document.getElementById('quiz-result');
 
-            // ประมวลผลและแสดงข้อความ
             if (selectedValue === '') {
                 resultDiv.innerHTML = '<span style="color: #d35400;">⚠️ กรุณาเลือกคำตอบก่อนกดส่งคำตอบครับ</span>';
             } else if (selectedValue === 'b') {
@@ -228,6 +254,17 @@
             } else {
                 resultDiv.innerHTML = '<span style="color: #c0392b;">❌ ยังไม่ถูกต้องครับ ลองกลับไปทบทวนในหัวข้อ "ฉันทลักษณ์" ดูอีกครั้งนะครับ</span>';
             }
+        }
+
+        // ฟังก์ชันสำหรับเปิดหน้าต่าง Popup แชทบอท
+        function openChatPopup() {
+            const url = 'https://gemini.google.com/gem/1AVLDeV7IQvZnAlUUYiJYL3GTl2uaQPKj?usp=sharing';
+            const windowName = 'GeminiChat';
+            // กำหนดขนาดหน้าต่างให้คล้ายมือถือ
+            const windowFeatures = 'width=400,height=600,resizable=yes,scrollbars=yes';
+            
+            // สั่งเปิดหน้าต่างใหม่
+            window.open(url, windowName, windowFeatures);
         }
     </script>
 </body>

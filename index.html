@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แหล่งเรียนรู้วรรณคดี: นิราศ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ส่วนของ CSS (การตกแต่งเว็บไซต์) --- */
+        :root {
+            --primary-color: #5c3a21; /* สีน้ำตาลเข้ม คลาสสิก */
+            --secondary-color: #dcb88e; /* สีน้ำตาลอ่อน */
+            --bg-color: #fcf9f2; /* สีพื้นหลังสว่างสบายตา */
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
+        /* แถบด้านบน */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* เมนูนำทาง */
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* กล่องเนื้อหา */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        /* กล่องตัวอย่างนิราศ */
+        .nirat-example {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .nirat-example h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* ส่วนของแบบทดสอบ (Quiz) */
+        .quiz-container {
+            background: #f4ece1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #dcb88e;
+        }
+
+        .quiz-option {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3e2615;
+        }
+
+        #quiz-result {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>เว็บไซต์ส่งเสริมการเรียนรู้: วรรณคดีนิราศ</h1>
+        <p>บันทึกการเดินทางที่ผสานความรักและความคิดถึง</p>
+    </header>
+
+    <nav>
+        <a href="#about">นิราศคืออะไร</a>
+        <a href="#rules">ฉันทลักษณ์</a>
+        <a href="#examples">ตัวอย่างนิราศ</a>
+        <a href="#quiz">แบบทดสอบ</a>
+    </nav>
+
+    <div class="container" id="about">
+        <h2>นิราศ คืออะไร?</h2>
+        <p><strong>"นิราศ"</strong> หมายถึง ไปจาก, ปราศจาก หรือระเหระหน ในทางวรรณคดีไทย นิราศคืองานประพันธ์ที่มักมีเนื้อหาพรรณนาถึง <strong>การเดินทาง</strong> ไปในที่ต่างๆ ควบคู่ไปกับ <strong>การคร่ำครวญถึงหญิงอันเป็นที่รัก</strong> (หรือบุคคลที่เคารพรัก) ที่กวีต้องจากมา</p>
+        <p>จุดเด่นของนิราศคือการที่กวีมักจะนำเอาสิ่งที่พบเห็นระหว่างทาง ไม่ว่าจะเป็น ชื่อสถานที่ ต้นไม้ นก หรือเหตุการณ์ มาผูกโยงเข้ากับความรู้สึกคิดถึงคนรักได้อย่างแยบคาย</p>
+    </div>
+
+    <div class="container" id="rules">
+        <h2>ฉันทลักษณ์และข้อบังคับของ "กลอนนิราศ"</h2>
+        <ul>
+            <li><strong>การขึ้นต้น:</strong> จะไม่ขึ้นต้นบทด้วยวรรคสดับ (วรรคที่ 1) เหมือนกลอนแปดทั่วไป แต่จะเริ่มแต่งที่ <strong>วรรครับ</strong> (วรรคที่ 2) เป็นต้นไป</li>
+            <li><strong>การลงท้าย:</strong> เมื่อจบเรื่อง กวีจะต้องลงท้ายคำประพันธ์ด้วยคำว่า <strong>"เอย"</strong> เสมอ</li>
+            <li><strong>จังหวะและความไพเราะ:</strong> วรรคหนึ่งใช้คำประมาณ 7 - 9 คำ และมีข้อบังคับสัมผัสนอก-สัมผัสใน คล้ายคลึงกับกลอนสุภาพ</li>
+        </ul>
+    </div>
+
+    <div class="container" id="examples">
+        <h2>ตัวอย่างนิราศที่สำคัญของไทย</h2>
+        
+        <div class="nirat-example">
+            <h3>นิราศภูเขาทอง (ผลงานของ สุนทรภู่)</h3>
+            <p>ได้รับการยกย่องจากวรรณคดีสโมสรว่าเป็น "ยอดของกลอนนิราศ" แต่งขึ้นในสมัยรัชกาลที่ 3 ขณะสุนทรภู่บวชเป็นพระและเดินทางไปนมัสการพระเจดีย์ภูเขาทองที่จังหวัดพระนครศรีอยุธยา มีความโดดเด่นทั้งด้านวรรณศิลป์และการสอดแทรกข้อคิดทางธรรม</p>
+        </div>
+
+        <div class="nirat-example">
+            <h3>นิราศเมืองแกลง (ผลงานของ สุนทรภู่)</h3>
+            <p>เป็นนิราศเรื่องแรกในชีวิตของสุนทรภู่ และเป็นเรื่องที่มีความยาวมากที่สุด แต่งขึ้นเมื่อครั้งเดินทางไปหาบิดาที่เมืองแกลง (จังหวัดระยอง) ทำให้ผู้อ่านได้เห็นสภาพสังคมและเส้นทางในยุคต้นรัตนโกสินทร์</p>
+        </div>
+
+        <div class="nirat-example">
+            <h3>โคลงนิราศนรินทร์ (ผลงานของ นายนรินทร์ธิเบศร์)</h3>
+            <p>แตกต่างจากนิราศของสุนทรภู่เพราะแต่งด้วย <strong>โคลงสี่สุภาพ</strong> (นำด้วยร่ายสุภาพ) โดดเด่นด้วยการใช้ถ้อยคำที่ประณีต อลังการ และแสดงอารมณ์ความโศกเศร้าจากการพลัดพรากได้อย่างลึกซึ้ง แต่งในสมัยรัชกาลที่ 2</p>
+        </div>
+    </div>
+
+    <div class="container" id="quiz">
+        <h2>ทดสอบความรู้ความเข้าใจ</h2>
+        <div class="quiz-container">
+            <p><strong>คำถาม:</strong> ตามขนบของการแต่ง "กลอนนิราศ" กวีจะต้องจบเนื้อเรื่อง (ลงท้าย) ด้วยคำใดเสมอ?</p>
+            <form id="quizForm">
+                <div class="quiz-option">
+                    <input type="radio" name="answer" value="a" id="ans-a">
+                    <label for="ans-a">ก. ลงท้ายด้วยคำว่า "เทอญ"</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer" value="b" id="ans-b">
+                    <label for="ans-b">ข. ลงท้ายด้วยคำว่า "เอย"</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer" value="c" id="ans-c">
+                    <label for="ans-c">ค. ลงท้ายด้วยคำว่า "เอย ทรามวัย"</label>
+                </div>
+                
+                <button type="button" class="btn" onclick="checkAnswer()">ส่งคำตอบ</button>
+            </form>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answers = document.getElementsByName('answer');
+            let selectedValue = '';
+            
+            // ตรวจสอบว่าผู้ใช้เลือกตัวเลือกใด
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i].checked) {
+                    selectedValue = answers[i].value;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+
+            // ประมวลผลและแสดงข้อความ
+            if (selectedValue === '') {
+                resultDiv.innerHTML = '<span style="color: #d35400;">⚠️ กรุณาเลือกคำตอบก่อนกดส่งคำตอบครับ</span>';
+            } else if (selectedValue === 'b') {
+                resultDiv.innerHTML = '<span style="color: #27ae60;">✅ ถูกต้อง! กลอนนิราศต้องลงท้ายด้วยคำว่า "เอย" เสมอ</span>';
+            } else {
+                resultDiv.innerHTML = '<span style="color: #c0392b;">❌ ยังไม่ถูกต้องครับ ลองกลับไปทบทวนในหัวข้อ "ฉันทลักษณ์" ดูอีกครั้งนะครับ</span>';
+            }
+        }
+    </script>
+</body>
+</html>

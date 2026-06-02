@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แหล่งเรียนรู้วรรณคดี: นิราศ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Srisakdi:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         /* --- ส่วนของ CSS (การตกแต่งเว็บไซต์) --- */
         :root {
-            --primary-color: #5c3a21; /* สีน้ำตาลเข้ม คลาสสิก */
-            --secondary-color: #dcb88e; /* สีน้ำตาลอ่อน */
+            --primary-color: #40826D; /* สีหลักตามที่ขอ */
+            --secondary-color: #FFE5EC; /* สีรองตามที่ขอ */
             --bg-color: #fcf9f2; /* สีพื้นหลังสว่างสบายตา */
             --text-color: #333;
         }
         
         body {
-            font-family: 'Sarabun', sans-serif;
+            font-family: 'Srisakdi', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            padding-left: 240px;
         }
 
-        /* แถบด้านบน */
+        /* แถบเมนูด้านซ้าย */
         header {
             background-color: var(--primary-color);
             color: white;
@@ -41,24 +42,28 @@
         /* เมนูนำทาง */
         nav {
             background-color: var(--secondary-color);
-            display: flex;
-            justify-content: center;
-            padding: 0.5rem;
-            position: sticky;
+            position: fixed;
             top: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            left: 0;
+            width: 220px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 1rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             z-index: 100;
-            flex-wrap: wrap; /* รองรับหน้าจอมือถือ */
         }
 
         nav a {
             color: var(--primary-color);
             text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 5px;
+            padding: 12px 16px;
+            margin: 0 0 10px 0;
             font-weight: 600;
             border-radius: 5px;
             transition: background 0.3s, color 0.3s;
+            display: block;
         }
 
         nav a:hover {
@@ -117,7 +122,7 @@
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 5px;
-            font-family: 'Sarabun', sans-serif;
+            font-family: 'Srisakdi', sans-serif;
             font-size: 16px;
             font-weight: 600;
             margin-top: 15px;
@@ -125,7 +130,7 @@
         }
 
         .btn:hover {
-            background-color: #3e2615;
+            background-color: #336b57;
         }
 
         #quiz-result {
@@ -159,7 +164,7 @@
 <body>
 
     <header>
-        <h1>เว็บไซต์ส่งเสริมการเรียนรู้: วรรณคดีนิราศ</h1>
+        <h1>วรรณคดีนิราศ</h1>
         <p>บันทึกการเดินทางที่ผสานความรักและความคิดถึง</p>
     </header>
 
@@ -167,6 +172,7 @@
         <a href="#about">นิราศคืออะไร</a>
         <a href="#rules">ฉันทลักษณ์</a>
         <a href="#examples">ตัวอย่างนิราศ</a>
+        <a href="#learn-more">เรียนรู้เพิ่มเติมจากนิราศ</a>
         <a href="#quiz">แบบทดสอบ</a>
     </nav>
 
@@ -204,56 +210,153 @@
         </div>
     </div>
 
+    <div class="container" id="learn-more">
+        <h2>เรียนรู้เพิ่มเติมจากนิราศ</h2>
+        <p>นิราศได้ให้ความรู้แก่เราหลายประการ มีทั้งความไพเราะในคำประพันธ์ในแง่มุมต่าง ๆ ความรู้สึกนึกคิดของผู้ประพันธ์ตามท้องเรื่อง วิถีชีวิตไทยในยุคนั้น ๆ ความรู้ทางธรรมชาติวิทยา ความรู้ทางภูมิศาสตร์ ประวัติศาสตร์ รวมทั้งตำนานต่าง ๆ ทำให้นิราศเป็นแหล่งอุดมด้วยความรู้ที่มีคุณค่า และเป็นเรื่องที่ควรเข้าไปเรียนรู้ด้วยความสุขและเพลิดเพลินได้ตลอดเวลา</p>
+        <p>ในอดีตมีกวีเอกของไทยหลายท่านได้แต่งนิราศไว้เป็นจำนวนมาก ซึ่งเป็นมรดกตกทอดมาถึงปัจจุบัน ส่วนใหญ่เราพอทราบว่าท่านผู้ใดได้แต่งนิราศเรื่องใดไว้ แต่มีนิราศบางเรื่องยังเป็นที่กังขาในหมู่ผู้ศึกษาว่าท่านผู้ใดเป็นผู้แต่งแน่ เพราะมีข้อมูลบางประการที่สันนิษฐานได้ เช่น นิราศพระแทนดงรัง</p>
+        <p>นิราศเป็นบทกลอนที่แต่งขึ้นในเวลาการเดินทางไปยังสถานที่ไกล โดยการเดินทางมักใช้เวลานานและส่วนมากใช้เรือ ซึ่งเป็นวิธีที่สะดวกกว่าวิธีอื่นในสมัยก่อน นักเดินทางจึงมีเวลาว่างมาก ผู้ที่มีสติปัญญาและขยันจะไม่ปล่อยเวลาไปโดยเปล่าประโยชน์ จึงใช้เวลาว่างแต่งบทกลอนพรรณาสิ่งที่พบน พบเห็นระหว่างทาง พร้อมกับบรรยายความอาลัยอาวรณ์จากการจากบ้านจากคนรัก จึงเป็นที่มาของเนื้อหาในนิราศหลายเรื่อง</p>
+        <p>การแต่งนิราศมีมาตั้งแต่สมัยกรุงศรีอยุธยา นิราศในสมัยนั้นมักแต่งเป็นโคลง เช่น โคลงหริกุญชัย โคลงพระศรีมโหสถ และโคลงกำศรวลศรีปราชญ์ ในขณะที่นิราศที่แต่งเป็นกลอนสุภาพมีเพียงเรื่องเดียวคือ นิราศเมืองเพชรบุรี ซึ่งแต่งรวมอยู่ในเพลงยาวสังวาส ไม่ได้แยกออกมาต่างหาก เหมือนนิราศในสมัยกรุงรัตนโกสินทร์ต่อมาที่นิยมแต่งเป็นกลอนสุภาพมากขึ้น</p>
+        <p><em>ที่มา: กระทรวงศึกษาธิการ</em></p>
+    </div>
+
     <div class="container" id="quiz">
-        <h2>ทดสอบความรู้ความเข้าใจ</h2>
+        <h2>ทดสอบความรู้หลังการอ่าน</h2>
         <div class="quiz-container">
-            <p><strong>คำถาม:</strong> ตามขนบของการแต่ง "กลอนนิราศ" กวีจะต้องจบเนื้อเรื่อง (ลงท้าย) ด้วยคำใดเสมอ?</p>
+            <p><strong>คำถามที่ 1:</strong> ตามขนบของการแต่ง "กลอนนิราศ" กวีจะต้องจบเนื้อเรื่อง (ลงท้าย) ด้วยคำใดเสมอ?</p>
             <form id="quizForm">
                 <div class="quiz-option">
-                    <input type="radio" name="answer" value="a" id="ans-a">
-                    <label for="ans-a">ก. ลงท้ายด้วยคำว่า "เทอญ"</label>
+                    <input type="radio" name="answer1" value="a" id="ans1-a">
+                    <label for="ans1-a">ก. ลงท้ายด้วยคำว่า "เทอญ"</label>
                 </div>
                 <div class="quiz-option">
-                    <input type="radio" name="answer" value="b" id="ans-b">
-                    <label for="ans-b">ข. ลงท้ายด้วยคำว่า "เอย"</label>
+                    <input type="radio" name="answer1" value="b" id="ans1-b">
+                    <label for="ans1-b">ข. ลงท้ายด้วยคำว่า "เอย"</label>
                 </div>
                 <div class="quiz-option">
-                    <input type="radio" name="answer" value="c" id="ans-c">
-                    <label for="ans-c">ค. ลงท้ายด้วยคำว่า "เอย ทรามวัย"</label>
+                    <input type="radio" name="answer1" value="c" id="ans1-c">
+                    <label for="ans1-c">ค. ลงท้ายด้วยคำว่า "เอย ทรามวัย"</label>
                 </div>
-                
-                <button type="button" class="btn" onclick="checkAnswer()">ส่งคำตอบ</button>
+
+                <p><strong>คำถามที่ 2:</strong> นิราศสมัยกรุงศรีอยุธยามักแต่งด้วยรูปแบบใด?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer2" value="a" id="ans2-a">
+                    <label for="ans2-a">ก. โคลง</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer2" value="b" id="ans2-b">
+                    <label for="ans2-b">ข. กลอนสุภาพ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer2" value="c" id="ans2-c">
+                    <label for="ans2-c">ค. เพลงยาว</label>
+                </div>
+
+                <p><strong>คำถามที่ 3:</strong> นิราศในสมัยก่อนส่วนมากแต่งขึ้นระหว่างการเดินทางด้วยพาหนะใด?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer3" value="a" id="ans3-a">
+                    <label for="ans3-a">ก. เรือ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer3" value="b" id="ans3-b">
+                    <label for="ans3-b">ข. รถม้า</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer3" value="c" id="ans3-c">
+                    <label for="ans3-c">ค. ช้าง</label>
+                </div>
+
+                <p><strong>คำถามที่ 4:</strong> ตามเนื้อหา นิราศช่วยให้ความรู้ในด้านใดเป็นพิเศษ?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer4" value="a" id="ans4-a">
+                    <label for="ans4-a">ก. เศรษฐศาสตร์และกฎหมาย</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer4" value="b" id="ans4-b">
+                    <label for="ans4-b">ข. ธรรมชาติวิทยาและภูมิศาสตร์</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer4" value="c" id="ans4-c">
+                    <label for="ans4-c">ค. คอมพิวเตอร์และวิทยาศาสตร์ข้อมูล</label>
+                </div>
+
+                <button type="button" class="btn" onclick="checkAnswer()">ตรวจคำตอบ</button>
             </form>
             <div id="quiz-result"></div>
         </div>
     </div>
 
     <div id="chat-button" onclick="openChatPopup()">
-        💬 พูดคุยกับแชทบอท
+         🤖 ผู้ช่วยเเชทบอท
     </div>
 
     <script>
         // ฟังก์ชันตรวจคำตอบแบบทดสอบ
         function checkAnswer() {
-            const answers = document.getElementsByName('answer');
-            let selectedValue = '';
-            
-            for (let i = 0; i < answers.length; i++) {
-                if (answers[i].checked) {
-                    selectedValue = answers[i].value;
-                    break;
+            const correctAnswers = {
+                answer1: 'b',
+                answer2: 'a',
+                answer3: 'a',
+                answer4: 'b'
+            };
+
+            const answerTexts = {
+                answer1: 'ข. ลงท้ายด้วยคำว่า "เอย"',
+                answer2: 'ก. โคลง',
+                answer3: 'ก. เรือ',
+                answer4: 'ข. ธรรมชาติวิทยาและภูมิศาสตร์'
+            };
+
+            const questionLabels = {
+                answer1: 'คำถามที่ 1',
+                answer2: 'คำถามที่ 2',
+                answer3: 'คำถามที่ 3',
+                answer4: 'คำถามที่ 4'
+            };
+
+            const resultDiv = document.getElementById('quiz-result');
+            let score = 0;
+            let unanswered = [];
+            let incorrectMessages = [];
+
+            for (const question in correctAnswers) {
+                const answers = document.getElementsByName(question);
+                let selectedValue = '';
+
+                for (let i = 0; i < answers.length; i++) {
+                    if (answers[i].checked) {
+                        selectedValue = answers[i].value;
+                        break;
+                    }
+                }
+
+                if (selectedValue === '') {
+                    unanswered.push(question);
+                } else if (selectedValue === correctAnswers[question]) {
+                    score += 1;
+                } else {
+                    incorrectMessages.push(questionLabels[question] + ': คำตอบที่ถูกต้องคือ ' + answerTexts[question]);
                 }
             }
 
-            const resultDiv = document.getElementById('quiz-result');
-
-            if (selectedValue === '') {
-                resultDiv.innerHTML = '<span style="color: #d35400;">⚠️ กรุณาเลือกคำตอบก่อนกดส่งคำตอบครับ</span>';
-            } else if (selectedValue === 'b') {
-                resultDiv.innerHTML = '<span style="color: #27ae60;">✅ ถูกต้อง! กลอนนิราศต้องลงท้ายด้วยคำว่า "เอย" เสมอ</span>';
-            } else {
-                resultDiv.innerHTML = '<span style="color: #c0392b;">❌ ยังไม่ถูกต้องครับ ลองกลับไปทบทวนในหัวข้อ "ฉันทลักษณ์" ดูอีกครั้งนะครับ</span>';
+            if (unanswered.length > 0) {
+                resultDiv.innerHTML = '<span style="color: #d35400;">⚠️ กรุณาตอบคำถามทุกข้อก่อนกดส่งคำตอบเจ้าค่ะ</span>';
+                return;
             }
+
+            let message = '<span style="color: #27ae60;">✅ คุณตอบถูก ' + score + ' ใน 4 ข้อ</span>';
+
+            if (incorrectMessages.length > 0) {
+                message += '<div style="margin-top:10px;color:#c0392b;">คำตอบที่ถูกต้องสำหรับข้อที่ตอบผิดเจ้าค่ะ:</div>';
+                message += '<ul style="margin:0.5rem 0 0 1.2rem;color:#c0392b;">';
+                incorrectMessages.forEach(item => {
+                    message += '<li>' + item + '</li>';
+                });
+                message += '</ul>';
+                message += '<div style="margin-top:0.75rem;color:#333;">ผิดไปนิดเดียวเอง! เอาใหม่นะเจ้าคะ</div>';
+                message += '<div style="margin-top:0.75rem;color:#c0392b;">ลองกลับไปทบทวนเนื้อหาเพิ่มเติมในหัวข้อ "เรียนรู้เพิ่มเติมจากนิราศ" อีกครั้งนะเจ้าคะ</div>';
+            }
+
+            resultDiv.innerHTML = message;
         }
 
         // ฟังก์ชันสำหรับเปิดหน้าต่าง Popup แชทบอท

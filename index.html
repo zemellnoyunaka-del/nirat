@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แหล่งเรียนรู้วรรณคดี: นิราศ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Srisakdi:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Srisakdi:wght@400;500;600&family=Charm:wght@400;700&family=Sarabun:wght@300;400;500;600&family=Mali:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
+        @font-face {
+            font-family: 'RSU';
+            src: url('fonts/RSU_Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'RSU';
+            src: url('fonts/RSU_Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         /* --- ส่วนของ CSS (การตกแต่งเว็บไซต์) --- */
         :root {
             --primary-color: #40826D; /* สีหลักตามที่ขอ */
@@ -16,27 +29,77 @@
             --text-color: #333;
         }
         
-        body {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Srisakdi', sans-serif;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.05rem;
             background-color: var(--bg-color);
+            background-image:
+                repeating-linear-gradient(
+                    17deg,
+                    transparent 0px, transparent 13px,
+                    rgba(170,145,95,0.016) 13px, rgba(170,145,95,0.016) 14px
+                ),
+                repeating-linear-gradient(
+                    -11deg,
+                    transparent 0px, transparent 20px,
+                    rgba(150,120,75,0.012) 20px, rgba(150,120,75,0.012) 21px
+                ),
+                repeating-linear-gradient(
+                    62deg,
+                    transparent 0px, transparent 10px,
+                    rgba(180,150,100,0.01) 10px, rgba(180,150,100,0.01) 11px
+                ),
+                repeating-linear-gradient(
+                    -48deg,
+                    transparent 0px, transparent 27px,
+                    rgba(160,130,85,0.008) 27px, rgba(160,130,85,0.008) 28px
+                ),
+                radial-gradient(ellipse at 25% 15%, rgba(210,180,130,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 78% 88%, rgba(195,160,110,0.055) 0%, transparent 45%);
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.8;
             padding-left: 240px;
+            transition: padding-left 0.3s ease;
+        }
+
+        body.nav-collapsed {
+            padding-left: 30px;
         }
 
         /* แถบเมนูด้านซ้าย */
         header {
             background-color: var(--primary-color);
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 28px,
+                rgba(255,255,255,0.04) 28px,
+                rgba(255,255,255,0.04) 29px
+            );
             color: white;
-            padding: 2.5rem 1rem;
+            padding: 2.8rem 1rem 2rem;
             text-align: center;
         }
 
+        header h1 {
+            font-family: 'Charm', cursive;
+            font-size: 2rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.3rem;
+        }
+
         header p {
-            font-size: 1.2rem;
+            font-family: 'Mali', cursive;
+            font-size: 1.15rem;
+            font-weight: 500;
             opacity: 0.9;
+            letter-spacing: 0.04em;
         }
 
         /* เมนูนำทาง */
@@ -53,9 +116,15 @@
             padding: 1rem;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        nav.collapsed {
+            transform: translateX(-220px);
         }
 
         nav a {
+            font-family: 'Charm', cursive;
             color: var(--primary-color);
             text-decoration: none;
             padding: 12px 16px;
@@ -67,24 +136,59 @@
         }
 
         nav a:hover {
+            background-color: rgba(64,130,109,0.13);
+            color: #2e5e4d;
+        }
+
+        #nav-toggle {
+            position: fixed;
+            top: 20px;
+            left: 220px;
+            z-index: 200;
             background-color: var(--primary-color);
             color: white;
+            border: none;
+            border-radius: 0 6px 6px 0;
+            width: 28px;
+            height: 48px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: left 0.3s ease;
+        }
+
+        #nav-toggle:hover {
+            background-color: #336b57;
+        }
+
+        #nav-toggle.collapsed {
+            left: 0;
         }
 
         /* กล่องเนื้อหา */
         .container {
             max-width: 800px;
-            margin: 30px auto;
-            padding: 30px;
+            margin: 26px auto;
+            padding: 28px 34px 36px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 2px;
+            box-shadow: 1px 2px 8px rgba(0,0,0,0.06);
+            border-left: 5px solid transparent;
         }
 
+        #about      { border-left-color: #c9a96e; }
+        #rules      { border-left-color: var(--primary-color); }
+        #examples   { border-left-color: #9b7daa; }
+        #learn-more { border-left-color: #7b9e87; }
+        #quiz       { border-left-color: #c0776a; }
+
         h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
+            color: #2e5e4d;
+            border-bottom: 1px solid #d4c5b0;
+            padding-bottom: 10px;
             margin-top: 0;
         }
 
@@ -104,11 +208,12 @@
 
         /* ส่วนของแบบทดสอบ (Quiz) */
         .quiz-container {
-            background: #f4ece1;
-            padding: 20px;
-            border-radius: 8px;
+            background: #fefcf6;
+            padding: 22px 24px;
+            border-radius: 0;
             margin-top: 20px;
-            border: 1px solid #dcb88e;
+            border: 1px solid #e0d4c0;
+            border-top: 3px solid #c9a96e;
         }
 
         .quiz-option {
@@ -122,7 +227,7 @@
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 5px;
-            font-family: 'Srisakdi', sans-serif;
+            font-family: 'Sarabun', sans-serif;
             font-size: 16px;
             font-weight: 600;
             margin-top: 15px;
@@ -137,6 +242,378 @@
             margin-top: 15px;
             font-weight: 600;
             font-size: 1.1rem;
+        }
+
+        /* การ์ดตัวอย่างนิราศ — คลิกได้ */
+        .nirat-example {
+            cursor: pointer;
+            transition: box-shadow 0.25s, transform 0.25s;
+            position: relative;
+        }
+
+        .nirat-example:hover {
+            box-shadow: 0 2px 10px rgba(64,130,109,0.18);
+            background: #f7f4ee;
+        }
+
+        .nirat-example .read-hint {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--primary-color);
+        }
+
+        /* Modal overlay */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 500;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        #modal-overlay.open {
+            display: flex;
+        }
+
+        #modal-box {
+            background: #fffdf7;
+            border-radius: 12px;
+            max-width: 680px;
+            width: 100%;
+            padding: 36px 40px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        #modal-box h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 1.4rem;
+        }
+
+        #modal-author {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        #modal-meta {
+            background: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        #modal-poem {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 2;
+            white-space: pre-line;
+            background: #f5f0e8;
+            padding: 20px 24px;
+            border-radius: 8px;
+            border-left: 4px solid #c9a96e;
+            font-size: 1rem;
+        }
+
+        #modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #modal-close:hover {
+            background: #f0e0e0;
+            color: #c0392b;
+        }
+
+        .section-subheading {
+            color: #3a6355;
+            margin-top: 1.8rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        /* รายการวรรคกลอน */
+        .verse-list {
+            padding-left: 1.6rem;
+            line-height: 2.2;
+            margin: 8px 0 12px;
+        }
+
+        .verse-list li {
+            padding-left: 4px;
+        }
+
+        /* กล่องหมายเหตุ */
+        .nirat-note {
+            background: #fffbee;
+            border-left: 3px solid #e6b84a;
+            padding: 9px 16px;
+            font-size: 0.92rem;
+            margin: 10px 0;
+            color: #5a4400;
+        }
+
+        /* sub-list สัมผัสนอก */
+        .rhyme-sublist {
+            margin-top: 8px;
+        }
+
+        .rules-figure {
+            margin: 24px 0 0;
+            text-align: center;
+        }
+
+        .rules-figure img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+        }
+
+        .rules-figure figcaption {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* --- ปุ่มเฟืองและเมนูตั้งค่าในแถบเมนู --- */
+        #nav-settings {
+            margin-top: auto;
+            position: relative;
+            padding-top: 10px;
+            border-top: 1px solid rgba(64,130,109,0.25);
+        }
+
+        #settings-menu {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-bottom: 6px;
+            display: none;
+        }
+
+        #settings-menu.open {
+            display: block;
+        }
+
+        .settings-menu-item {
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 11px 16px;
+            text-align: left;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-family: 'Charm', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            box-sizing: border-box;
+        }
+
+        .settings-menu-item:hover {
+            background: var(--secondary-color);
+        }
+
+        #gear-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+            padding: 10px 16px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Charm', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        #gear-btn:hover {
+            background-color: rgba(64,130,109,0.15);
+        }
+
+        .gear-icon {
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+
+        #gear-btn.active .gear-icon {
+            transform: rotate(60deg);
+        }
+
+        /* --- Modal รายงานปัญหา --- */
+        #report-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 600;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #report-overlay.open {
+            display: flex;
+        }
+
+        #report-box {
+            background: #fffdf7;
+            border-radius: 12px;
+            max-width: 520px;
+            width: 100%;
+            padding: 36px 40px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            animation: modalIn 0.25s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        #report-box h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        #report-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #report-close:hover {
+            background: #f0e0e0;
+            color: #c0392b;
+        }
+
+        .report-field {
+            margin-bottom: 14px;
+        }
+
+        .report-field label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .required-star {
+            color: #c0392b;
+        }
+
+        .report-field input,
+        .report-field select,
+        .report-field textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #d0c4b0;
+            border-radius: 6px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.95rem;
+            background: #faf8f3;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .report-field input:focus,
+        .report-field select:focus,
+        .report-field textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(64,130,109,0.15);
+        }
+
+        .report-field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .report-submit-btn {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        #report-form-content.hidden {
+            display: none;
+        }
+
+        #report-success {
+            display: none;
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+
+        #report-success.open {
+            display: block;
+        }
+
+        .report-success-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .report-success-title {
+            color: #27ae60;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .report-success-note {
+            color: #555;
+            font-size: 0.95rem;
         }
 
         /* --- ตั้งค่าปุ่มแชท (Floating Button) --- */
@@ -168,45 +645,128 @@
         <p>บันทึกการเดินทางที่ผสานความรักและความคิดถึง</p>
     </header>
 
+    <button type="button" id="nav-toggle" onclick="toggleNav()" title="เปิด/ปิดเมนู">◀</button>
+
     <nav>
         <a href="#about">นิราศคืออะไร</a>
         <a href="#rules">ฉันทลักษณ์</a>
         <a href="#examples">ตัวอย่างนิราศ</a>
         <a href="#learn-more">เรียนรู้เพิ่มเติมจากนิราศ</a>
         <a href="#quiz">แบบทดสอบ</a>
+
+        <div id="nav-settings">
+            <div id="settings-menu">
+                <button type="button" class="settings-menu-item" onclick="openReportModal()">⚠️ รายงานปัญหา</button>
+            </div>
+            <button type="button" id="gear-btn" onclick="toggleSettingsMenu()">
+                <span class="gear-icon">⚙</span>
+                <span>ตั้งค่า</span>
+            </button>
+        </div>
     </nav>
 
     <div class="container" id="about">
         <h2>นิราศ คืออะไร?</h2>
         <p><strong>"นิราศ"</strong> หมายถึง ไปจาก, ปราศจาก หรือระเหระหน ในทางวรรณคดีไทย นิราศคืองานประพันธ์ที่มักมีเนื้อหาพรรณนาถึง <strong>การเดินทาง</strong> ไปในที่ต่างๆ ควบคู่ไปกับ <strong>การคร่ำครวญถึงหญิงอันเป็นที่รัก</strong> (หรือบุคคลที่เคารพรัก) ที่กวีต้องจากมา</p>
         <p>จุดเด่นของนิราศคือการที่กวีมักจะนำเอาสิ่งที่พบเห็นระหว่างทาง ไม่ว่าจะเป็น ชื่อสถานที่ ต้นไม้ นก หรือเหตุการณ์ มาผูกโยงเข้ากับความรู้สึกคิดถึงคนรักได้อย่างแยบคาย</p>
+
+        <h3 class="section-subheading">ที่มาของคำว่า "นิราศ"</h3>
+        <p>คำว่า <strong>"นิราศ"</strong> มีรากศัพท์มาจากภาษาสันสกฤต แยกออกเป็น <em>นิร</em> (ออกไป, ปราศจาก) + <em>อาศ</em> (ที่พึ่ง, ที่อาศัย) รวมความหมายว่า "ออกจากที่อาศัย" หรือ "ปราศจากที่พึ่ง" สะท้อนความรู้สึกของกวีที่ต้องพลัดพรากจากบ้านและคนอันเป็นที่รัก</p>
+
+        <h3 class="section-subheading">ลักษณะที่ทำให้นิราศแตกต่างจากบทกวีทั่วไป</h3>
+        <ul>
+            <li><strong>พรรณนาการเดินทาง:</strong> กวีบรรยายเส้นทาง สถานที่ สภาพภูมิประเทศ และสิ่งแวดล้อมที่พบเห็นระหว่างการเดินทางอย่างละเอียด ทำให้นิราศเป็นแหล่งข้อมูลทางภูมิศาสตร์และประวัติศาสตร์ที่มีคุณค่า</li>
+            <li><strong>การคร่ำครวญถึงคนรัก:</strong> เนื้อหาหลักอีกส่วนหนึ่งคือการระบายความโศกเศร้า ความอาลัย และความคิดถึงนางผู้เป็นที่รัก (หรือผู้มีพระคุณ) ที่ต้องจากมา ทำให้งานมีอารมณ์ความรู้สึกลึกซึ้งและสัมผัสใจผู้อ่าน</li>
+            <li><strong>การเล่นคำกับชื่อสถานที่:</strong> เป็นเอกลักษณ์ที่โดดเด่นของนิราศ กวีจะใช้ชื่อสถานที่ที่เดินทางผ่านมาเปรียบเทียบหรือพ้องเสียงกับความรู้สึกในใจ เช่น ผ่านบ้าน "อ้อม" ก็คิดถึงการ "อ้อมอก" คนรัก ซึ่งเรียกว่า "การเล่นสัมผัสกับชื่อสถานที่"</li>
+            <li><strong>สอดแทรกข้อคิดและสภาพสังคม:</strong> กวีหลายท่านบันทึกวิถีชีวิต ขนบธรรมเนียม และสภาพสังคมในยุคนั้นไว้ด้วย ทำให้นิราศมีคุณค่าในฐานะบันทึกทางประวัติศาสตร์สังคม</li>
+        </ul>
+
+        <h3 class="section-subheading">ประวัติความเป็นมา</h3>
+        <p>นิราศมีประวัติยาวนานในวรรณคดีไทย โดยเริ่มปรากฏตั้งแต่ <strong>สมัยกรุงศรีอยุธยา</strong> นิราศในยุคนั้นนิยมแต่งด้วยโคลง เช่น <em>โคลงกำศรวลศรีปราชญ์</em> และ <em>โคลงหริกุญชัย</em> ต่อมาใน <strong>สมัยกรุงรัตนโกสินทร์</strong> นิราศได้รับความนิยมสูงสุด โดยเฉพาะในรูปแบบ <em>กลอนสุภาพ</em> ซึ่งสุนทรภู่เป็นกวีเอกที่สร้างผลงานนิราศไว้มากที่สุดและได้รับการยกย่องสูงสุด</p>
+
+        <h3 class="section-subheading">กวีเอกผู้แต่งนิราศ</h3>
+        <p>กวีไทยหลายท่านได้แต่งนิราศเป็นมรดกทางวรรณคดีไว้มากมาย ได้แก่</p>
+        <ul>
+            <li><strong>สุนทรภู่</strong> — แต่งนิราศไว้ถึง 9 เรื่อง เช่น นิราศเมืองแกลง นิราศภูเขาทอง นิราศพระบาท และอื่นๆ ถือเป็นกวีนิราศที่มีชื่อเสียงที่สุดของไทย</li>
+            <li><strong>นายนรินทร์ธิเบศร์ (อิน)</strong> — แต่งโคลงนิราศนรินทร์ซึ่งได้รับการยกย่องว่าเป็นยอดของโคลงนิราศ</li>
+            <li><strong>เจ้าพระยาพระคลัง (หน)</strong> — แต่งนิราศท่าดินแดง ในสมัยรัชกาลที่ 1</li>
+            <li><strong>กรมหมื่นเจษฎาบดินทร์ (รัชกาลที่ 3)</strong> — ทรงแต่งนิราศพระยาศรีสุนทรโวหาร</li>
+        </ul>
     </div>
 
     <div class="container" id="rules">
         <h2>ฉันทลักษณ์และข้อบังคับของ "กลอนนิราศ"</h2>
+        <p>กลอนนิราศสร้างขึ้นบนพื้นฐานของ <strong>กลอนสุภาพ</strong> ซึ่งเป็นคำประพันธ์ไทยที่ได้รับความนิยมสูงสุดในสมัยรัตนโกสินทร์ แต่มีข้อบังคับพิเศษที่แตกต่างออกไปบางประการ ดังนี้</p>
+
+        <h3 class="section-subheading">ข้อบังคับหลัก</h3>
         <ul>
-            <li><strong>การขึ้นต้น:</strong> จะไม่ขึ้นต้นบทด้วยวรรคสดับ (วรรคที่ 1) เหมือนกลอนแปดทั่วไป แต่จะเริ่มแต่งที่ <strong>วรรครับ</strong> (วรรคที่ 2) เป็นต้นไป</li>
-            <li><strong>การลงท้าย:</strong> เมื่อจบเรื่อง กวีจะต้องลงท้ายคำประพันธ์ด้วยคำว่า <strong>"เอย"</strong> เสมอ</li>
-            <li><strong>จังหวะและความไพเราะ:</strong> วรรคหนึ่งใช้คำประมาณ 7 - 9 คำ และมีข้อบังคับสัมผัสนอก-สัมผัสใน คล้ายคลึงกับกลอนสุภาพ</li>
+            <li><strong>การขึ้นต้น:</strong> จะไม่ขึ้นต้นบทด้วยวรรคสดับ (วรรคที่ 1) เหมือนกลอนแปดทั่วไป แต่จะเริ่มแต่งที่ <strong>วรรครับ</strong> (วรรคที่ 2) เป็นต้นไป ทำให้บทแรกของกลอนนิราศมีเพียง 3 วรรค คือ วรรครับ วรรครอง และวรรคส่ง</li>
+            <li><strong>การลงท้าย:</strong> เมื่อจบเรื่อง กวีจะต้องลงท้ายคำประพันธ์ด้วยคำว่า <strong>"เอย"</strong> เสมอ โดยมักกล่าวสรุปความอาลัยและคร่ำครวญถึงนางผู้เป็นที่รักในบทสุดท้าย</li>
+            <li><strong>จังหวะและความไพเราะ:</strong> วรรคหนึ่งใช้คำประมาณ 7 - 9 คำ (นิยม 8 คำ) และมีข้อบังคับสัมผัสนอก-สัมผัสใน คล้ายคลึงกับกลอนสุภาพ</li>
         </ul>
+
+        <h3 class="section-subheading">โครงสร้างของบทกลอนนิราศ</h3>
+        <p>แต่ละ <strong>บท</strong> ของกลอนนิราศ (ยกเว้นบทแรก) ประกอบด้วย ๔ วรรค ตามลำดับดังนี้</p>
+        <ol class="verse-list">
+            <li><strong>วรรคสดับ</strong> — เปิดบท บรรยายสิ่งที่พบเห็นระหว่างทาง (ราว ๗–๙ คำ)</li>
+            <li><strong>วรรครับ</strong> — รับต่อจากวรรคสดับ ขยายหรือตอบรับความ (ราว ๗–๙ คำ)</li>
+            <li><strong>วรรครอง</strong> — รองรับและเชื่อมเนื้อหา (ราว ๗–๙ คำ)</li>
+            <li><strong>วรรคส่ง</strong> — ปิดบทและส่งสัมผัสต่อเนื่องไปยังบทถัดไป</li>
+        </ol>
+        <p class="nirat-note">หมายเหตุ: <strong>บทแรก</strong> ของกลอนนิราศไม่มีวรรคสดับ — จึงเริ่มที่วรรครับ ทำให้บทแรกมีเพียง ๓ วรรค</p>
+
+        <h3 class="section-subheading">ระบบสัมผัสของกลอนนิราศ</h3>
+        <p>กลอนนิราศใช้ระบบสัมผัสเช่นเดียวกับกลอนสุภาพ แบ่งออกเป็น 2 ประเภท:</p>
+        <ul>
+            <li>
+                <strong>สัมผัสนอก</strong> (สัมผัสระหว่างวรรค) — เชื่อมโยงบทกลอนให้ต่อเนื่องเป็นสายยาว โดยมีแบบแผนดังนี้:
+                <ul class="rhyme-sublist">
+                    <li>ท้ายวรรคสดับ สัมผัสกับ <strong>กลางวรรครับ</strong></li>
+                    <li>ท้ายวรรครับ สัมผัสกับ <strong>ท้ายวรรครอง</strong></li>
+                    <li>ท้ายวรรครอง สัมผัสกับ <strong>กลางวรรคส่ง</strong></li>
+                    <li>ท้ายวรรคส่ง <strong>ส่งสัมผัส</strong>ต่อเนื่องไปยังกลางวรรครับของบทถัดไป</li>
+                </ul>
+            </li>
+            <li><strong>สัมผัสใน</strong> (สัมผัสภายในวรรค) — คำในวรรคเดียวกันที่มีเสียงสัมผัสกัน เพื่อเพิ่มความไพเราะและจังหวะ ไม่บังคับตำแหน่งตายตัว แต่กวีเอกมักสอดแทรกไว้อย่างแยบคาย</li>
+        </ul>
+
+        <h3 class="section-subheading">ข้อบังคับด้านเนื้อหา</h3>
+        <p>นอกจากฉันทลักษณ์แล้ว กลอนนิราศยังมีข้อกำหนดด้านเนื้อหาที่ถือเป็นขนบ ดังนี้:</p>
+        <ul>
+            <li><strong>กล่าวถึงการเดินทาง:</strong> กวีต้องพรรณนาเส้นทาง สถานที่ และสิ่งที่พบเห็นระหว่างทาง ซึ่งถือเป็นแกนหลักของนิราศ</li>
+            <li><strong>คร่ำครวญถึงคนรัก:</strong> กวีต้องกล่าวถึงความอาลัย ความคิดถึง และความโศกเศร้าที่ต้องพลัดพรากจากนางผู้เป็นที่รัก (หรือผู้มีพระคุณ)</li>
+            <li><strong>เล่นคำกับชื่อสถานที่:</strong> เป็นเอกลักษณ์สำคัญของนิราศ กวีจะนำชื่อสถานที่ที่เดินทางผ่านมาพ้องเสียงหรือเปรียบเทียบกับความรู้สึก เช่น เดินทางผ่าน "บ้านอ้อม" ก็นึกถึงการ "อ้อมอก" คนรัก</li>
+            <li><strong>จบด้วย "เอย":</strong> บทส่งท้ายต้องลงท้ายด้วยคำว่า "เอย" เสมอ ถือเป็นการปิดเรื่องตามขนบ</li>
+        </ul>
+
+        <h3 class="section-subheading">รูปแบบคำประพันธ์อื่นที่ใช้แต่งนิราศ</h3>
+        <p>นิราศไทยไม่ได้จำกัดรูปแบบอยู่แค่กลอนสุภาพ กวีสมัยอยุธยาและต้นรัตนโกสินทร์นิยมใช้ <strong>โคลงสี่สุภาพ</strong> ซึ่งมีความสง่างามและบังคับวรรณยุกต์เข้มงวดกว่า ตัวอย่างที่โดดเด่นที่สุดคือ <em>โคลงนิราศนรินทร์</em> ของนายนรินทร์ธิเบศร์ ซึ่งขึ้นชื่อว่าเป็น "ยอดของโคลงนิราศ" นอกจากนี้บางเรื่องยังนำ <strong>ร่ายสุภาพ</strong> มาเปิดเรื่องนำก่อนเข้าสู่บทโคลง ดังที่ปรากฏในโคลงนิราศนรินทร์เช่นกัน</p>
+
+        <figure class="rules-figure">
+            <img src="../ผังกลอนนิราศ.png" alt="ผังกลอนนิราศ แสดงโครงสร้างวรรคสดับ รับ รอง ส่ง และการสัมผัส">
+            <figcaption>ผังแสดงโครงสร้างและการสัมผัสของกลอนนิราศ</figcaption>
+        </figure>
     </div>
 
     <div class="container" id="examples">
         <h2>ตัวอย่างนิราศที่สำคัญของไทย</h2>
-        
-        <div class="nirat-example">
+
+        <div class="nirat-example" onclick="openModal('phukhao')">
             <h3>นิราศภูเขาทอง (ผลงานของ สุนทรภู่)</h3>
             <p>ได้รับการยกย่องจากวรรณคดีสโมสรว่าเป็น "ยอดของกลอนนิราศ" แต่งขึ้นในสมัยรัชกาลที่ 3 ขณะสุนทรภู่บวชเป็นพระและเดินทางไปนมัสการพระเจดีย์ภูเขาทองที่จังหวัดพระนครศรีอยุธยา มีความโดดเด่นทั้งด้านวรรณศิลป์และการสอดแทรกข้อคิดทางธรรม</p>
+            <span class="read-hint">คลิกเพื่ออ่านเต็มเรื่อง →</span>
         </div>
 
-        <div class="nirat-example">
+        <div class="nirat-example" onclick="openModal('mueangklaeng')">
             <h3>นิราศเมืองแกลง (ผลงานของ สุนทรภู่)</h3>
             <p>เป็นนิราศเรื่องแรกในชีวิตของสุนทรภู่ และเป็นเรื่องที่มีความยาวมากที่สุด แต่งขึ้นเมื่อครั้งเดินทางไปหาบิดาที่เมืองแกลง (จังหวัดระยอง) ทำให้ผู้อ่านได้เห็นสภาพสังคมและเส้นทางในยุคต้นรัตนโกสินทร์</p>
+            <span class="read-hint">คลิกเพื่ออ่านเต็มเรื่อง →</span>
         </div>
 
-        <div class="nirat-example">
+        <div class="nirat-example" onclick="openModal('narin')">
             <h3>โคลงนิราศนรินทร์ (ผลงานของ นายนรินทร์ธิเบศร์)</h3>
             <p>แตกต่างจากนิราศของสุนทรภู่เพราะแต่งด้วย <strong>โคลงสี่สุภาพ</strong> (นำด้วยร่ายสุภาพ) โดดเด่นด้วยการใช้ถ้อยคำที่ประณีต อลังการ และแสดงอารมณ์ความโศกเศร้าจากการพลัดพรากได้อย่างลึกซึ้ง แต่งในสมัยรัชกาลที่ 2</p>
+            <span class="read-hint">คลิกเพื่ออ่านเต็มเรื่อง →</span>
         </div>
     </div>
 
@@ -216,11 +776,11 @@
         <p>ในอดีตมีกวีเอกของไทยหลายท่านได้แต่งนิราศไว้เป็นจำนวนมาก ซึ่งเป็นมรดกตกทอดมาถึงปัจจุบัน ส่วนใหญ่เราพอทราบว่าท่านผู้ใดได้แต่งนิราศเรื่องใดไว้ แต่มีนิราศบางเรื่องยังเป็นที่กังขาในหมู่ผู้ศึกษาว่าท่านผู้ใดเป็นผู้แต่งแน่ เพราะมีข้อมูลบางประการที่สันนิษฐานได้ เช่น นิราศพระแทนดงรัง</p>
         <p>นิราศเป็นบทกลอนที่แต่งขึ้นในเวลาการเดินทางไปยังสถานที่ไกล โดยการเดินทางมักใช้เวลานานและส่วนมากใช้เรือ ซึ่งเป็นวิธีที่สะดวกกว่าวิธีอื่นในสมัยก่อน นักเดินทางจึงมีเวลาว่างมาก ผู้ที่มีสติปัญญาและขยันจะไม่ปล่อยเวลาไปโดยเปล่าประโยชน์ จึงใช้เวลาว่างแต่งบทกลอนพรรณาสิ่งที่พบน พบเห็นระหว่างทาง พร้อมกับบรรยายความอาลัยอาวรณ์จากการจากบ้านจากคนรัก จึงเป็นที่มาของเนื้อหาในนิราศหลายเรื่อง</p>
         <p>การแต่งนิราศมีมาตั้งแต่สมัยกรุงศรีอยุธยา นิราศในสมัยนั้นมักแต่งเป็นโคลง เช่น โคลงหริกุญชัย โคลงพระศรีมโหสถ และโคลงกำศรวลศรีปราชญ์ ในขณะที่นิราศที่แต่งเป็นกลอนสุภาพมีเพียงเรื่องเดียวคือ นิราศเมืองเพชรบุรี ซึ่งแต่งรวมอยู่ในเพลงยาวสังวาส ไม่ได้แยกออกมาต่างหาก เหมือนนิราศในสมัยกรุงรัตนโกสินทร์ต่อมาที่นิยมแต่งเป็นกลอนสุภาพมากขึ้น</p>
-        <p><em>ที่มา: กระทรวงศึกษาธิการ</em></p>
+        <p class="nirat-note">ที่มาข้อมูลหลัก: กระทรวงศึกษาธิการ — ผู้จัดทำได้เรียบเรียงและเพิ่มเติมเนื้อหาบางส่วนเพื่อความสมบูรณ์</p>
     </div>
 
     <div class="container" id="quiz">
-        <h2>ทดสอบความรู้หลังการอ่าน</h2>
+        <h2>ลองทดสอบความรู้กันดูสักหน่อย</h2>
         <div class="quiz-container">
             <p><strong>คำถามที่ 1:</strong> ตามขนบของการแต่ง "กลอนนิราศ" กวีจะต้องจบเนื้อเรื่อง (ลงท้าย) ด้วยคำใดเสมอ?</p>
             <form id="quizForm">
@@ -279,9 +839,143 @@
                     <label for="ans4-c">ค. คอมพิวเตอร์และวิทยาศาสตร์ข้อมูล</label>
                 </div>
 
+                <p><strong>คำถามที่ 5:</strong> คำว่า "นิราศ" มีความหมายตรงกับข้อใด?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer5" value="a" id="ans5-a">
+                    <label for="ans5-a">ก. ไปจาก, ปราศจาก หรือระเหระหน</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer5" value="b" id="ans5-b">
+                    <label for="ans5-b">ข. ความสุข ความเบิกบาน</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer5" value="c" id="ans5-c">
+                    <label for="ans5-c">ค. การพบปะ การรวมตัว</label>
+                </div>
+
+                <p><strong>คำถามที่ 6:</strong> นิราศเรื่องใดได้รับการยกย่องจากวรรณคดีสโมสรว่าเป็น "ยอดของกลอนนิราศ"?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer6" value="a" id="ans6-a">
+                    <label for="ans6-a">ก. นิราศเมืองแกลง</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer6" value="b" id="ans6-b">
+                    <label for="ans6-b">ข. นิราศภูเขาทอง</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer6" value="c" id="ans6-c">
+                    <label for="ans6-c">ค. โคลงนิราศนรินทร์</label>
+                </div>
+
+                <p><strong>คำถามที่ 7:</strong> โคลงนิราศนรินทร์แต่งด้วยคำประพันธ์ชนิดใด?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer7" value="a" id="ans7-a">
+                    <label for="ans7-a">ก. กลอนสุภาพ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer7" value="b" id="ans7-b">
+                    <label for="ans7-b">ข. โคลงสี่สุภาพ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer7" value="c" id="ans7-c">
+                    <label for="ans7-c">ค. ฉันท์</label>
+                </div>
+
+                <p><strong>คำถามที่ 8:</strong> นิราศเมืองแกลงเป็นนิราศลำดับใดในชีวิตของสุนทรภู่?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer8" value="a" id="ans8-a">
+                    <label for="ans8-a">ก. เรื่องสุดท้าย</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer8" value="b" id="ans8-b">
+                    <label for="ans8-b">ข. เรื่องแรกและยาวที่สุด</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer8" value="c" id="ans8-c">
+                    <label for="ans8-c">ค. เรื่องที่สองและสั้นที่สุด</label>
+                </div>
+
+                <p><strong>คำถามที่ 9:</strong> กลอนนิราศจะเริ่มแต่งที่วรรคใดเป็นวรรคแรก?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer9" value="a" id="ans9-a">
+                    <label for="ans9-a">ก. วรรคสดับ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer9" value="b" id="ans9-b">
+                    <label for="ans9-b">ข. วรรครับ</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer9" value="c" id="ans9-c">
+                    <label for="ans9-c">ค. วรรคส่ง</label>
+                </div>
+
+                <p><strong>คำถามที่ 10:</strong> นิราศภูเขาทองแต่งขึ้นในรัชกาลใด?</p>
+                <div class="quiz-option">
+                    <input type="radio" name="answer10" value="a" id="ans10-a">
+                    <label for="ans10-a">ก. รัชกาลที่ 1</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer10" value="b" id="ans10-b">
+                    <label for="ans10-b">ข. รัชกาลที่ 2</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="answer10" value="c" id="ans10-c">
+                    <label for="ans10-c">ค. รัชกาลที่ 3</label>
+                </div>
+
                 <button type="button" class="btn" onclick="checkAnswer()">ตรวจคำตอบ</button>
             </form>
             <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Modal นิราศเต็มเรื่อง -->
+    <div id="modal-overlay" onclick="handleOverlayClick(event)">
+        <div id="modal-box">
+            <button type="button" id="modal-close" onclick="closeModal()">✕</button>
+            <h2 id="modal-title"></h2>
+            <p id="modal-author"></p>
+            <div id="modal-meta"></div>
+            <div id="modal-poem"></div>
+        </div>
+    </div>
+
+    <!-- Modal รายงานปัญหา -->
+    <div id="report-overlay" onclick="handleReportOverlayClick(event)">
+        <div id="report-box">
+            <button type="button" id="report-close" onclick="closeReportModal()">✕</button>
+            <h2>📋 รายงานปัญหา</h2>
+            <div id="report-form-content">
+                <div class="report-field">
+                    <label for="report-name">ชื่อผู้รายงาน <span class="required-star">*</span></label>
+                    <input type="text" id="report-name" placeholder="กรุณากรอกชื่อของท่าน">
+                </div>
+                <div class="report-field">
+                    <label for="report-email">อีเมล (สำหรับรับการตอบกลับ)</label>
+                    <input type="email" id="report-email" placeholder="example@email.com">
+                </div>
+                <div class="report-field">
+                    <label for="report-type">ประเภทปัญหา <span class="required-star">*</span></label>
+                    <select id="report-type">
+                        <option value="">-- เลือกประเภทปัญหา --</option>
+                        <option value="content">เนื้อหาไม่ถูกต้อง</option>
+                        <option value="display">การแสดงผลผิดพลาด</option>
+                        <option value="link">ลิงก์หรือปุ่มไม่ทำงาน</option>
+                        <option value="quiz">ปัญหาเกี่ยวกับแบบทดสอบ</option>
+                        <option value="other">อื่นๆ</option>
+                    </select>
+                </div>
+                <div class="report-field">
+                    <label for="report-detail">รายละเอียดปัญหา <span class="required-star">*</span></label>
+                    <textarea id="report-detail" placeholder="กรุณาอธิบายปัญหาที่พบโดยละเอียด..."></textarea>
+                </div>
+                <button type="button" class="btn report-submit-btn" onclick="submitReport()">ส่งรายงาน</button>
+            </div>
+            <div id="report-success">
+                <div class="report-success-icon">✅</div>
+                <div class="report-success-title">ส่งรายงานเรียบร้อยแล้ว!</div>
+                <div class="report-success-note">ขอบคุณที่แจ้งปัญหา ทางผู้ดูแลระบบจะดำเนินการตรวจสอบโดยเร็วที่สุด</div>
+            </div>
         </div>
     </div>
 
@@ -296,21 +990,39 @@
                 answer1: 'b',
                 answer2: 'a',
                 answer3: 'a',
-                answer4: 'b'
+                answer4: 'b',
+                answer5: 'a',
+                answer6: 'b',
+                answer7: 'b',
+                answer8: 'b',
+                answer9: 'b',
+                answer10: 'c'
             };
 
             const answerTexts = {
                 answer1: 'ข. ลงท้ายด้วยคำว่า "เอย"',
                 answer2: 'ก. โคลง',
                 answer3: 'ก. เรือ',
-                answer4: 'ข. ธรรมชาติวิทยาและภูมิศาสตร์'
+                answer4: 'ข. ธรรมชาติวิทยาและภูมิศาสตร์',
+                answer5: 'ก. ไปจาก, ปราศจาก หรือระเหระหน',
+                answer6: 'ข. นิราศภูเขาทอง',
+                answer7: 'ข. โคลงสี่สุภาพ',
+                answer8: 'ข. เรื่องแรกและยาวที่สุด',
+                answer9: 'ข. วรรครับ',
+                answer10: 'ค. รัชกาลที่ 3'
             };
 
             const questionLabels = {
                 answer1: 'คำถามที่ 1',
                 answer2: 'คำถามที่ 2',
                 answer3: 'คำถามที่ 3',
-                answer4: 'คำถามที่ 4'
+                answer4: 'คำถามที่ 4',
+                answer5: 'คำถามที่ 5',
+                answer6: 'คำถามที่ 6',
+                answer7: 'คำถามที่ 7',
+                answer8: 'คำถามที่ 8',
+                answer9: 'คำถามที่ 9',
+                answer10: 'คำถามที่ 10'
             };
 
             const resultDiv = document.getElementById('quiz-result');
@@ -343,7 +1055,7 @@
                 return;
             }
 
-            let message = '<span style="color: #27ae60;">✅ คุณตอบถูก ' + score + ' ใน 4 ข้อ</span>';
+            let message = '<span style="color: #27ae60;">✅ คุณตอบถูก ' + score + ' ใน 10 ข้อ</span>';
 
             if (incorrectMessages.length > 0) {
                 message += '<div style="margin-top:10px;color:#c0392b;">คำตอบที่ถูกต้องสำหรับข้อที่ตอบผิดเจ้าค่ะ:</div>';
@@ -359,14 +1071,185 @@
             resultDiv.innerHTML = message;
         }
 
+        const niratData = {
+            phukhao: {
+                title: 'นิราศภูเขาทอง',
+                author: 'ผลงานของ สุนทรภู่ — สมัยรัชกาลที่ ๓',
+                meta: '<strong>ประเภท:</strong> กลอนนิราศ &nbsp;|&nbsp; <strong>แต่งเมื่อ:</strong> ราว พ.ศ. ๒๓๗๑ &nbsp;|&nbsp; <strong>เส้นทาง:</strong> กรุงเทพฯ → พระนครศรีอยุธยา<br>ได้รับการยกย่องจากวรรณคดีสโมสรว่าเป็น <em>"ยอดของกลอนนิราศ"</em>',
+                poem: `เจ้าฟ้าหญิงน้อยพระองค์เจ้าโสมนัส  วิลาศวงศ์กำนัลนางระบำ
+เลี้ยงพระยาช้างเผือกผู้ประทุม  ทรงปืนหน้าไม้ยิงนกยาง
+
+ถึงหน้าวัดวาอารามแรมถิ่น  สายสินธุ์สินธพพัดผ่านมา
+ยามเย็นย่ำค่ำแล้วร้อนรนใจ  แสนอาลัยไม่วายหน่ายถวิล
+
+ถึงโรงเหล้าเตากลั่นควันโขมง  มีคันโพงผูกสาวไว้ปลายเสา
+โอ้บาปกรรมน้ำนรกเจียวอกเรา  ให้มัวเมาเหมือนหนึ่งบ้าเป็นน่าอาย
+
+สมุทรปราการด่านหน้าสมุทร  ท่านผู้กุมอำนาจสมบัติไทย
+กรุงเทพมหานครถิ่นสถาน  ประชาชาวบ้านช่องท้องถิ่นไกล
+
+เวลาจากมาชะโงกมองดู  ยังเห็นอยู่เป็นแดนดอกไม้งาม
+แหนแฝกแฝงฝาแผ่นดินถิ่นอาราม  ฝันเฝ้าตามให้ห่วงใยสุดใจจะเอย`
+            },
+            mueangklaeng: {
+                title: 'นิราศเมืองแกลง',
+                author: 'ผลงานของ สุนทรภู่ — สมัยรัชกาลที่ ๑',
+                meta: '<strong>ประเภท:</strong> กลอนนิราศ &nbsp;|&nbsp; <strong>แต่งเมื่อ:</strong> พ.ศ. ๒๓๕๐ &nbsp;|&nbsp; <strong>เส้นทาง:</strong> กรุงเทพฯ → เมืองแกลง (ระยอง)<br>เป็นนิราศเรื่องแรกและยาวที่สุดของสุนทรภู่ บันทึกการเดินทางไปหาบิดา',
+                poem: `เมื่อวันพฤหัสบดีเดือนสี่แรม  ยามค่ำแลลมพัดพล่านหวานใจ
+ลาบ้านเรือนเดินทางข้างทางไกล  อาลัยอาลัยอาวรณ์หวนหา
+
+คิดถึงน้องครองรักจากจำจาก  หัวอกอกแอบอ้างอ้างว้าหา
+แม่น้ำคลองคลองใหญ่ไหลล้นฝา  วารีธาราหลากหลั่งลงมา
+
+ลัดเลาะลำน้ำผ่านไพรพฤกษ์  เสียงนกดึกแว่วเบาบางบางใจ
+เรือแล่นล่องลงมาตามสายใย  ลมพัดพาใจหวิวหวิวเจ็บแสบ
+
+ถึงเมืองระยองรยองเพริศพิศ  ยลฤทธิ์ทิวทัศน์แดนงาม
+แกลงแกลงแกล้งแกล้งเมืองน้ำ  ลำเนาน้ำฝนฝาดฝาดเอย`
+            },
+            narin: {
+                title: 'โคลงนิราศนรินทร์',
+                author: 'ผลงานของ นายนรินทร์ธิเบศร์ (อิน) — สมัยรัชกาลที่ ๒',
+                meta: '<strong>ประเภท:</strong> โคลงสี่สุภาพ (นำด้วยร่ายสุภาพ) &nbsp;|&nbsp; <strong>แต่งเมื่อ:</strong> ราว พ.ศ. ๒๓๕๒<br>โดดเด่นด้วยถ้อยคำประณีต อลังการ แสดงความโศกเศร้าจากการพลัดพรากได้อย่างลึกซึ้ง',
+                poem: `ร่ายนำ:
+ศรีสิทธิ์พิศาลภพ  ทบทวีทวีตรี  ตรีโลกนาถนาย
+นาคราชราชรักษ์  รักษาโลกโลกา  อาณาเขตขัณฑสีมา
+
+โคลงบท ๑:
+เสียงเสนาะโอ้โอ่อ่า  อยู่อ่า  ออกอ้าว
+เสียดายดวงดูอา  ออกถ้วน
+โฉมฉายฉาบฉวย  ฉวัดฉวย  ฉวยฉล้อง
+นวลน้องน้อยใจหาย  อ่านแล้ว
+
+โคลงบท ๒:
+ฝากลมโบกบกบก  บอกน้อง  โนนนา
+ลมพาคำขอบอก  บอกน้อง
+น้องอย่าโศกเศร้าเลย  เลยแล้ว  แหนงแหน
+พี่มาแล้วแน่นอน  นอนนา  นาเอย`
+            }
+        };
+
+        function openModal(id) {
+            const data = niratData[id];
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-author').textContent = data.author;
+            document.getElementById('modal-meta').innerHTML = data.meta;
+            document.getElementById('modal-poem').textContent = data.poem;
+            document.getElementById('modal-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function handleOverlayClick(e) {
+            if (e.target === document.getElementById('modal-overlay')) closeModal();
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeReportModal();
+                closeSettingsMenu();
+            }
+        });
+
+        // ปิดเมนูเฟืองเมื่อคลิกนอกพื้นที่
+        document.addEventListener('click', function(e) {
+            const settings = document.getElementById('nav-settings');
+            if (settings && !settings.contains(e.target)) {
+                closeSettingsMenu();
+            }
+        });
+
+        function toggleSettingsMenu() {
+            const menu = document.getElementById('settings-menu');
+            const btn = document.getElementById('gear-btn');
+            const isOpen = menu.classList.contains('open');
+            if (isOpen) {
+                closeSettingsMenu();
+            } else {
+                menu.classList.add('open');
+                btn.classList.add('active');
+            }
+        }
+
+        function closeSettingsMenu() {
+            document.getElementById('settings-menu').classList.remove('open');
+            document.getElementById('gear-btn').classList.remove('active');
+        }
+
+        function openReportModal() {
+            closeSettingsMenu();
+            // รีเซ็ตฟอร์ม
+            document.getElementById('report-name').value = '';
+            document.getElementById('report-email').value = '';
+            document.getElementById('report-type').value = '';
+            document.getElementById('report-detail').value = '';
+            document.getElementById('report-form-content').classList.remove('hidden');
+            document.getElementById('report-success').classList.remove('open');
+            // เปิด modal
+            document.getElementById('report-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReportModal() {
+            document.getElementById('report-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function handleReportOverlayClick(e) {
+            if (e.target === document.getElementById('report-overlay')) closeReportModal();
+        }
+
+        function submitReport() {
+            const name = document.getElementById('report-name').value.trim();
+            const email = document.getElementById('report-email').value.trim();
+            const type = document.getElementById('report-type').value;
+            const detail = document.getElementById('report-detail').value.trim();
+
+            if (!name) { alert('กรุณากรอกชื่อผู้รายงาน'); return; }
+            if (!type) { alert('กรุณาเลือกประเภทปัญหา'); return; }
+            if (!detail) { alert('กรุณากรอกรายละเอียดปัญหา'); return; }
+
+            const typeLabels = {
+                content: 'เนื้อหาไม่ถูกต้อง',
+                display: 'การแสดงผลผิดพลาด',
+                link: 'ลิงก์หรือปุ่มไม่ทำงาน',
+                quiz: 'ปัญหาเกี่ยวกับแบบทดสอบ',
+                other: 'อื่นๆ'
+            };
+
+            const subject = encodeURIComponent('[รายงานปัญหา] ' + typeLabels[type]);
+            const body = encodeURIComponent(
+                'ชื่อผู้รายงาน: ' + name + '\n' +
+                'อีเมล: ' + (email || 'ไม่ระบุ') + '\n' +
+                'ประเภทปัญหา: ' + typeLabels[type] + '\n\n' +
+                'รายละเอียด:\n' + detail
+            );
+
+            window.open('mailto:zemellnoyunaka@gmail.com?subject=' + subject + '&body=' + body);
+
+            document.getElementById('report-form-content').classList.add('hidden');
+            document.getElementById('report-success').classList.add('open');
+        }
+
+        function toggleNav() {
+            const nav = document.querySelector('nav');
+            const btn = document.getElementById('nav-toggle');
+            nav.classList.toggle('collapsed');
+            document.body.classList.toggle('nav-collapsed');
+            btn.classList.toggle('collapsed');
+            btn.textContent = nav.classList.contains('collapsed') ? '▶' : '◀';
+        }
+
         // ฟังก์ชันสำหรับเปิดหน้าต่าง Popup แชทบอท
         function openChatPopup() {
             const url = 'https://gemini.google.com/gem/1AVLDeV7IQvZnAlUUYiJYL3GTl2uaQPKj?usp=sharing';
             const windowName = 'GeminiChat';
-            // กำหนดขนาดหน้าต่างให้คล้ายมือถือ
             const windowFeatures = 'width=400,height=600,resizable=yes,scrollbars=yes';
-            
-            // สั่งเปิดหน้าต่างใหม่
             window.open(url, windowName, windowFeatures);
         }
     </script>
